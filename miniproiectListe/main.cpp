@@ -21,7 +21,7 @@ locatie* CreareLocatieNoua(string denumire, string tip){
 void InserareLocatieDupaVal(locatie* &prim, string valoareCautata, string denumire, string tip)
 {
     locatie* x = prim; 
-    while(x -> denumire != valoareCautata, x -> urm != NULL)
+    while(x -> denumire != valoareCautata && x -> urm != NULL)
         x = x -> urm;
     locatie* y = x -> urm;
     locatie* nou = CreareLocatieNoua(denumire, tip);
@@ -32,7 +32,7 @@ void InserareLocatieDupaVal(locatie* &prim, string valoareCautata, string denumi
 void InserareLocatieInainteVal(locatie* &prim, string valoareCautata, string denumire, string tip)
 {
     locatie* x = prim; 
-    while(x -> urm -> denumire != valoareCautata, x -> urm != NULL)
+    while(x -> urm -> denumire != valoareCautata && x -> urm != NULL)
         x = x -> urm;
     locatie* y = x -> urm;
     locatie* nou = CreareLocatieNoua(denumire, tip);
@@ -93,14 +93,17 @@ void AfisareTip(locatie* prim, locatie* locatieActuala, string tipCerut)
     q = prim;
     while(q != NULL)
     {
-        if(q == locatieActuala)
-            cout << "[*] ";
-        else
-            cout << "[ ] ";
+        if (tipCerut == q->tip)
+        {
+            if(q == locatieActuala)
+                cout << "[*] ";
+            else
+                cout << "[ ] ";
 
-        if(tipCerut== q->tip)
-            cout<<q->denumire<<" :P "<<q->tip << endl;
-        q=q->urm;
+            if(tipCerut== q->tip)
+                cout<<q->denumire<<" :P "<<q->tip << endl;
+        }  
+        q=q->urm;            
     }
 
 }

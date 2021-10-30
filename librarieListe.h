@@ -4,7 +4,8 @@ using namespace std;
 
 struct nod{
     int val;
-    nod* urm, ant;
+    nod* urm;
+    nod* ant;
 };
 
 nod* CreareNodNou(int x){
@@ -118,7 +119,7 @@ void InserareInaintePozitie(nod* prim, int k, int val){
 
 void InserareInainteValoare(nod* prim, int k, int val){
     nod* x = prim;
-    while(x->val!=k, x->urm!=NULL)
+    while(x->val!=k && x->urm!=NULL)
         x = x->urm;
     nod* y = x -> ant;
     nod* nou = CreareNodNou(val);
@@ -130,7 +131,7 @@ void InserareInainteValoare(nod* prim, int k, int val){
 
 void InserareDupaValoare(nod* prim, int k, int val){
     nod* x = prim;
-    while(x->val!=k, x->urm!=NULL)
+    while(x->val!=k && x->urm!=NULL)
         x = x->urm;
     nod* y = x -> urm;
     nod* nou = CreareNodNou(val);
