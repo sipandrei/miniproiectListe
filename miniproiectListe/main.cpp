@@ -107,11 +107,14 @@ void AfisareTip(locatie* prim, locatie* locatieActuala, string tipCerut)
 
 void Miscare(locatie* &locatieActuala, int numarMiscari)
 {
-    while (numarMiscari, locatieActuala->urm != NULL)
-    {
-        locatieActuala = locatieActuala -> urm;
-        numarMiscari--;
-    }    
+    if(locatieActuala->urm == NULL)
+        cout << "Ati ajuns la capatul tunelului! :)" << endl;
+    else
+        while (numarMiscari-1, locatieActuala->urm != NULL)
+        {
+            locatieActuala = locatieActuala -> urm;
+            numarMiscari--;
+        }    
 }
 
 int Meniu()
@@ -133,9 +136,9 @@ int Meniu()
 void CitireInfoNod(string &denumire, string &tip)
 {
     cout << "Dati denumirea locatiei"<<endl;
-    cin >> denumire; 
+    std::getline(std::cin >> std::ws, denumire, '\n'); 
     cout<<"Dati tipul locatiei"<<endl;
-    cin >> tip;
+    std::getline(std::cin >> std::ws, tip, '\n');
 }
 
 int main()
@@ -174,7 +177,7 @@ int main()
         
         case 3:
             cout << "Ce tip de locatie cautati?" << endl;
-            cin >> valoareaCautata;
+            std::getline(std::cin >> std::ws, valoareaCautata, '\n');
             AfisareTip(prim, locatieActuala, valoareaCautata);
             break;
 
@@ -191,14 +194,14 @@ int main()
         case 6:
             CitireInfoNod(denumire, tip);
             cout<<"Dupa ce locatie vreti sa inserati?" << endl;
-            cin>>valoareaCautata;
+            std::getline(std::cin >> std::ws, valoareaCautata, '\n');
             InserareLocatieDupaVal(prim,valoareaCautata, denumire, tip);
             break;
         
         case 7:
             CitireInfoNod(denumire, tip);
             cout<<"Inainte de ce locatie vreti sa inserati?" << endl;
-            cin>>valoareaCautata;
+            std::getline(std::cin >> std::ws, valoareaCautata, '\n');
             InserareLocatieInainteVal(prim, valoareaCautata, denumire, tip);
             break;
 
